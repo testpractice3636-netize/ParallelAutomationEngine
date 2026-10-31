@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Parallel Cross Browser Regression Suite" 
+       parallel="tests" 
+       thread-count="2" 
+       data-provider-thread-count="2">
+      <!-- 🔑 GLOBAL LISTENERS PLACEMENT: Right here beneath the suite tag! -->
+    <listeners>
+        <listener class-name="com.automation.tests.TestFailureListener" />
+    </listeners>
+    <!-- Chrome Execution Thread Context -->
+    <test name="Storefront Execution Validation - Chrome">
+        <parameter name="browserType" value="chrome" />
+        <classes> 
+			<!--<class name="com.automation.tests.JavaScriptAlertsTest"/>-->
+			<!--<class name="com.automation.othertests.NestedFramesTest"/>-->
+			<!--<class name="com.automation.tests.DynamicLoadingTest"/>-->
+			<!--<class name="com.automation.tests.SecureDownloadTest"/>-->
+			<!--<class name="com.automation.tests.AlertsTest1"/>-->
+			<!--<class name="com.automation.tests.CheckboxesTest"/>-->
+			<!--<class name="com.automation.tests.DynamicControlsTest" /-->
+             <!--<class name="com.automation.tests.LoginTest" /> -->
+            <!-- <class name="com.automation.tests.MultiWindowTest" /> -->
+            <!--<class name="com.automation.tests.FramesTest" /> -->
+            <!-- <class name="com.automation.tests.AlertsTest" />-->
+            <!--<class name="com.automation.tests.HoverTest" />-->
+            <class name="com.automation.tests.WebInputsTest" /> 
+            <!--<class name="com.automation.tests.WebTableTest" /> -->
+            <!--<class name="com.automation.tests.WebTableActionsTest" /> -->
+			<!--<class name="com.automation.tests.PaginationTableTest" />-->
+			<!--<class name="com.automation.tests.P1TableTest" /> -->
+			<!--<class name="com.automation.tests.ComplexActionsTest" />-->
+        </classes> 
+    </test>
+
+    <!-- Edge Execution Thread Context -->
+    <test name="Storefront Execution Validation - Edge">
+        <parameter name="browserType" value="edge" />
+        <classes>
+			<!--<class name="com.automation.tests.JavaScriptAlertsTest"/>-->
+			<!--<class name="com.automation.othertests.NestedFramesTest"/>-->
+			<!--<class name="com.automation.tests.DynamicLoadingTest"/>-->
+			<!--<class name="com.automation.tests.SecureDownloadTest"/> -->
+			<!--<class name="com.automation.tests.AlertsTest1"/>-->
+			<!--<class name="com.automation.tests.CheckboxesTest"/>-->
+			<!--<class name="com.automation.tests.DynamicControlsTest" />-->
+            <!--<class name="com.automation.tests.LoginTest" />-->
+            <!-- <class name="com.automation.tests.MultiWindowTest" /> -->
+            <!-- <class name="com.automation.tests.FramesTest" /> -->
+            <!-- <class name="com.automation.tests.AlertsTest" />-->
+            <!-- <class name="com.automation.tests.HoverTest" /> -->
+            <!--<class name="com.automation.tests.WebInputsTest" /> -->
+           <!-- <class name="com.automation.tests.WebTableTest" /> -->
+            <!--<class name="com.automation.tests.WebTableActionsTest" /> -->
+            <!--<class name="com.automation.tests.PaginationTableTest" /> -->
+            <!--<class name="com.automation.tests.P1TableTest" />  -->
+        </classes>
+    </test>
+    
+</suite>

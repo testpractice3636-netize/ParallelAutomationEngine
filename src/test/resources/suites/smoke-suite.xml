@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org">
+<suite name="High-Speed Smoke Suite" parallel="tests" thread-count="2" verbose="2">
+    
+    <test name="Smoke Executions - Chrome">
+        <parameter name="browser" value="chrome" />
+        <classes>
+            <class name="com.automation.tests.LoginTest"/>
+        </classes>
+    </test>
+
+    <test name="Smoke Executions - Edge">
+        <parameter name="browser" value="edge" />
+        <classes>
+            <class name="com.automation.tests.LoginTest"/>
+        </classes>
+    </test>
+    
+</suite>

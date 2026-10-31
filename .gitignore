@@ -1,0 +1,25 @@
+# Ignore edge .exe
+msedgedriver.exe
+
+# Target compilation output (Java binaries)
+target/
+*.class
+
+# TestNG execution outputs & reports
+test-output/
+surefire-reports/
+allure-results/
+allure-report/
+
+# IDE specific project preference files
+.idea/
+*.iml
+*.iws
+.metadata/
+.classpath
+.project
+.settings/
+
+# Local configuration files that contain your unique folder paths
+*.env
+local-credentials.json
