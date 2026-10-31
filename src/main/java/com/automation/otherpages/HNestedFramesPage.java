@@ -3,7 +3,7 @@ package com.automation.otherpages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class NestedFramesPage {
+public class HNestedFramesPage {
     private final WebDriver driver;
 
     // 🎯 FRAME NAME STRATEGIES (Standard frames frequently use string names/IDs)
@@ -14,7 +14,7 @@ public class NestedFramesPage {
     // 🔍 Inner text locators inside the frame document bodies
     private final By frameBodyLocator = By.tagName("body");
 
-    public NestedFramesPage(WebDriver driver) {
+    public HNestedFramesPage(WebDriver driver) {
         this.driver = driver;
     }
 

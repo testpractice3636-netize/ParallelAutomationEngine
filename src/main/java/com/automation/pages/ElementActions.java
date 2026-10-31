@@ -169,7 +169,7 @@ public class ElementActions {
 	                element.click();
 	                return; // Native click succeeded, break out completely
 
-	            } catch (org.openqa.selenium.StaleElementReferenceException staleException) {
+	            } catch (StaleElementReferenceException staleException) {
 	                attempts++;
 	                System.out.println("⚠️ [RESILIENCE-ENGINE] Caught stale reference on: " + locator.toString() 
 	                    + " -> Re-polling DOM tree structure (Attempt " + attempts + "/" + maxRetries + ")");

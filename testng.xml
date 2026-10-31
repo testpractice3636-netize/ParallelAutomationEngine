@@ -23,12 +23,15 @@
             <!--<class name="com.automation.tests.FramesTest" /> -->
             <!-- <class name="com.automation.tests.AlertsTest" />-->
             <!--<class name="com.automation.tests.HoverTest" />-->
-            <class name="com.automation.tests.WebInputsTest" /> 
+            <!-- <class name="com.automation.tests.WebInputsTest" /> -->
             <!--<class name="com.automation.tests.WebTableTest" /> -->
             <!--<class name="com.automation.tests.WebTableActionsTest" /> -->
 			<!--<class name="com.automation.tests.PaginationTableTest" />-->
 			<!--<class name="com.automation.tests.P1TableTest" /> -->
 			<!--<class name="com.automation.tests.ComplexActionsTest" />-->
+			
+			<!-- Practice testcases -->
+			<class name="com.automation.othertests.HDynamicControlsTest" />
         </classes> 
     </test>
 
