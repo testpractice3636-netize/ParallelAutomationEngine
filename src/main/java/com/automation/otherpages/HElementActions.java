@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -49,7 +50,52 @@ public class HElementActions {
 		return getWait().until(ExpectedConditions.presenceOfElementLocated(locator));
 	}
 	
-	public void clickElement(By locator)
+	public void clickElement(By locator) {
+	    int attempts = 0;
+	    int maxRetries = 3;
+	     
+	    while (attempts < maxRetries) {
+	        try {
+	            WebElement element = waitForClickable(locator);
+	            element.click();
+	            return; // 🚀 Native click event executed successfully!
+	            
+	        } catch (StaleElementReferenceException staleException) {
+	            attempts++;
+	            System.out.println("⚠️ [RESILIENCE-ENGINE] Stale node caught on: " + locator.toString() + ". Retrying element lookup...");
+	            
+	        } catch (WebDriverException webDriverException) {
+	            // 🎯 Architectural Filter: If the browser is mid-navigation or unloads the DOM tree structure,
+	            // intercept the throw, suppress the fallback check, and allow the thread to cross the boundary cleanly.
+	            String message = webDriverException.getMessage().toLowerCase();
+	            if (message.contains("navigation") || message.contains("document") || message.contains("unload")) {
+	                System.out.println("ℹ️ [NAV-GUARD] Page context transformation intercepted mid-click event. Bypassing fallback lookup safely.");
+	                return; 
+	            }
+	            
+	            // If it's a standard click interception error (like a pop-up overlay), route straight to JS fallback
+	            System.out.println("⚠️ [CLICK-GUARD] Native click obstructed by viewport component. Triggering JS fallback injector...");
+	            executeJavaScriptClickFallback(locator);
+	            return;
+	            
+	        } catch (Exception genericException) {
+	            executeJavaScriptClickFallback(locator);
+	            return;
+	        }
+	    }
+	    
+	    System.out.println("💥 [RESILIENCE-ENGINE] Max retries exhausted. Running final fallback sequence...");
+	    executeJavaScriptClickFallback(locator);
+	}
+	private void executeJavaScriptClickFallback(By locator) {
+	    try {
+	        WebElement jsElement = waitForVisibility(locator);
+	        js.executeScript("arguments[0].click();", jsElement); 
+	    } catch (Exception jsException) {
+	        throw new AssertionError("Click failed via both native loops and fallback JS loops: " + locator.toString(), jsException);
+	    }
+	}
+	/*public void clickElement(By locator)
 	{
 		 int attempts = 0;
 	     int maxRetries = 3;
@@ -90,7 +136,7 @@ public class HElementActions {
 			}
 		}
 		}
-	}
+	}*/
 	
 	 public void enterText(By locator, String value) {
 	    	int attempts = 0;

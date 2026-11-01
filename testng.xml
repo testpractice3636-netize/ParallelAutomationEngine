@@ -31,7 +31,8 @@
 			<!--<class name="com.automation.tests.ComplexActionsTest" />-->
 			
 			<!-- Practice testcases -->
-			<class name="com.automation.othertests.HDynamicControlsTest" />
+			<!--<class name="com.automation.othertests.HDynamicControlsTest" />-->
+			<class name="com.automation.othertests.HDynamicLoadingTest" />
         </classes> 
     </test>
 
