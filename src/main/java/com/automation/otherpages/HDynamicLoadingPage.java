@@ -31,12 +31,12 @@ public class HDynamicLoadingPage {
 	private final By finish = By.cssSelector(" div#finish>h4");
 	
 	
-	public void loadDynamicLink()
+	public Boolean loadDynamicLink()
 	{
 		element.clickElement(dynamicLoadingLink);
-		
+		Boolean chk = element.getWait().until(ExpectedConditions.urlContains("2"));
 		//return element.getWait().until(d -> driver.getCurrentUrl().contains(urlVal));
-		//return driver.getCurrentUrl().contains(urlVal);
+		return chk;
 	}
 	
 	public String loadDynamicText()

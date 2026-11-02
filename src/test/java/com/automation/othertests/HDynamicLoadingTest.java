@@ -19,10 +19,10 @@ public class HDynamicLoadingTest extends BaseTest{
 		String dynamicText = "Hello World!";
 		HDynamicLoadingPage hdylo = new HDynamicLoadingPage(getDriver());
 		System.out.println("......Enter 1.......");
-		hdylo.loadDynamicLink();
+		Boolean urlState = hdylo.loadDynamicLink();
 		System.out.println("url is valid.....:");
 		
-		//Assert.assertTrue(urlState, "ISSUE in loading dynamic url");
+		Assert.assertTrue(urlState, "ISSUE in loading dynamic url");
 		
 		String uIdynamicText = hdylo.loadDynamicText();
 		

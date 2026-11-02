@@ -32,7 +32,11 @@
 			
 			<!-- Practice testcases -->
 			<!--<class name="com.automation.othertests.HDynamicControlsTest" />-->
-			<class name="com.automation.othertests.HDynamicLoadingTest" />
+			<!--<class name="com.automation.othertests.HDynamicLoadingTest" />-->
+			<!--<class name="com.automation.othertests.HBasicAuthTest" />-->
+			<!--<class name="com.automation.othertests.HMultiWindowTest" />-->
+			<class name="com.automation.othertests.HIframeTest" />
+
         </classes> 
     </test>
 

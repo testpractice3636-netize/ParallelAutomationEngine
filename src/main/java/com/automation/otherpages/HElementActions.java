@@ -9,6 +9,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -138,15 +139,18 @@ public class HElementActions {
 		}
 	}*/
 	
-	 public void enterText(By locator, String value) {
+	 /*public void enterText(By locator, String value) {
 	    	int attempts = 0;
 	    	int maxRetries = 3;
-	        while (attempts < maxRetries) {
+	    	//String check;
+	    	//Actions actions = new Actions(driver);
+ 	        while (attempts < maxRetries) {
 	            try {
 	            // 💎 TRUE REUSE: Uses 'this.wait' instance allocation cleanly
 	            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	            element.clear(); 
 	            element.sendKeys(value);
+	          
 	            System.out.println("[COMMONS-INFO] Successfully typed value via optimized master wait.");
 	            return;
 	            	} 
@@ -165,6 +169,54 @@ public class HElementActions {
 	                }
 	        }
 	    }
+	    }*/
+	public void enterText(By locator, String value) {
+	    int attempts = 0;
+	    int maxRetries = 3;
+	    
+	    // 💡 ARCHITECT NOTE: Declare Actions out here so it doesn't get reconstructed in every retry loop
+	    Actions actions = new Actions(driver);
+
+	    while (attempts < maxRetries) {
+	        try {
+	            // 💎 TRUE REUSE: Uses 'this.wait' instance allocation cleanly
+	            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	            
+	            element.clear(); 
+	            element.sendKeys(value);
+	            
+	            // 💡 WYSIWYG FIX: Rich-text editors inside iFrames (like TinyMCE) often hold text 
+	            // inside innerText/Text Content rather than the standard HTML 'value' attribute.
+	            String textCheck = element.getText();
+	            String valueCheck = element.getAttribute("value");
+	            
+	            // If standard sendKeys failed to insert any text, fall back to the native Actions mouse/keyboard simulation
+	            if ((textCheck == null || textCheck.trim().isEmpty()) && (valueCheck == null || valueCheck.trim().isEmpty())) {
+	                System.out.println("⚠️ [RESILIENCE-ENGINE] Standard input unverified. Executing precise hardware-level Actions simulation...");
+	                actions.moveToElement(element)
+	                       .click()
+	                       .sendKeys(value)
+	                       .build()
+	                       .perform();
+	            }
+	            
+	            System.out.println("[COMMONS-INFO] Successfully typed value via optimized master wait.");
+	            return;
+	            
+	        } catch (StaleElementReferenceException staleException) {
+	            attempts++;
+	            System.out.println("⚠️ [RESILIENCE-ENGINE] DOM modification intercepted text entry. Retrying...");
+	            if (attempts == maxRetries) {
+	                throw staleException;
+	            }
+	        } catch (Exception e) {
+	            attempts++;
+	            System.out.println("⚠️ [RESILIENCE-ENGINE] General interaction lag detected on " + locator.toString() + ". Retrying (" + attempts + "/" + maxRetries + ")");
+	            if (attempts == maxRetries) {
+	                throw new AssertionError("Text input failed entirely after maximum retry loops: " + locator.toString(), e);
+	            }
+	        }
 	    }
-	
+	}
+
 }
