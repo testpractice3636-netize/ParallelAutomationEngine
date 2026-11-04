@@ -11,11 +11,11 @@ public class HoverTest extends BaseTest {
         System.out.println("------ ENTRY 16: Mouse Hover Gestures Loop Active ------");
         
         SecureHoverPage hoverPage = new SecureHoverPage(getDriver());
-        
+        getDriver().get("https://practice.expandtesting.com/hovers");
         // 🧪 Loop from profile index 1 to 3 to validate all profile cards sequentially
         for (int i = 1; i <= 3; i++) {
             getDriver().switchTo().defaultContent();
-            getDriver().get("https://practice.expandtesting.com/hovers");
+           
             
             // 1. Execute dynamic parameterized hover gesture
             hoverPage.hoverOverProfile(i);

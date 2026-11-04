@@ -22,7 +22,7 @@
             <!-- <class name="com.automation.tests.MultiWindowTest" /> -->
             <!--<class name="com.automation.tests.FramesTest" /> -->
             <!-- <class name="com.automation.tests.AlertsTest" />-->
-            <!--<class name="com.automation.tests.HoverTest" />-->
+           <!-- <class name="com.automation.tests.HoverTest" />-->
             <!-- <class name="com.automation.tests.WebInputsTest" /> -->
             <!--<class name="com.automation.tests.WebTableTest" /> -->
             <!--<class name="com.automation.tests.WebTableActionsTest" /> -->
@@ -35,8 +35,11 @@
 			<!--<class name="com.automation.othertests.HDynamicLoadingTest" />-->
 			<!--<class name="com.automation.othertests.HBasicAuthTest" />-->
 			<!--<class name="com.automation.othertests.HMultiWindowTest" />-->
-			<class name="com.automation.othertests.HIframeTest" />
-
+			<!--<class name="com.automation.othertests.HIframeTest" />-->
+			<!--<class name="com.automation.othertests.HHoverTest" />-->
+			<!--<class name="com.automation.othertests.HFileUploadTest" />-->
+		    <!-- <class name="com.automation.othertests.HDownloadTest" /> -->
+		    	 <class name="com.automation.othertests.HJsAlertTest" />
         </classes> 
     </test>
 

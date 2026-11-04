@@ -44,7 +44,7 @@ public class SecureDownloadTest extends BaseTest {
                 int deleteCount = 0;
                 for (File file : existingFiles) {
                     // Wipes out 'some-file.txt', 'some-file (1).txt', etc.
-                    if (file.getName().contains(targetedFile)) {
+                    if ((file.getName().contains(targetedFile))) {
                         if (file.delete()) {
                             deleteCount++;
                         }
