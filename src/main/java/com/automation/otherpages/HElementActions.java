@@ -181,7 +181,7 @@ public class HElementActions {
 	        try {
 	            // 💎 TRUE REUSE: Uses 'this.wait' instance allocation cleanly
 	            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-	            
+	                   
 	            element.clear(); 
 	            element.sendKeys(value);
 	            

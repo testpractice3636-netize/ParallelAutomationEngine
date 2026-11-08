@@ -39,7 +39,11 @@
 			<!--<class name="com.automation.othertests.HHoverTest" />-->
 			<!--<class name="com.automation.othertests.HFileUploadTest" />-->
 		    <!-- <class name="com.automation.othertests.HDownloadTest" /> -->
-		    	 <class name="com.automation.othertests.HJsAlertTest" />
+		    <!-- <class name="com.automation.othertests.HJsAlertTest" /> -->
+		    <!-- <class name="com.automation.othertests.HLoginTest" /> -->
+		   <!-- <class name="com.automation.othertests.ExceptionsCheckTest" /> -->
+		   <!-- <class name="com.automation.othertests.HDataTablesTest" /> -->
+		    <class name="com.automation.othertests.HCustDropdownTest" />
         </classes> 
     </test>
 

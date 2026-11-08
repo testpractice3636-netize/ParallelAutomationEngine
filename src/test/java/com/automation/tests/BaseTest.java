@@ -57,6 +57,7 @@ public class BaseTest {
                 Map<String, Object> prefs = new HashMap<String, Object>();
                 prefs.put("credentials_enable_service", false);
                 prefs.put("profile.password_manager_enabled", false);
+                prefs.put("profile.password_manager_leak_detection", false);
                 options.setExperimentalOption("prefs", prefs);
 
                 driverInstance = new ChromeDriver(options);
@@ -70,6 +71,14 @@ public class BaseTest {
                 options.addArguments("--disable-blink-features=AutomationControlled");
                 options.addArguments("--disable-infobars");
                 
+                //change password popup
+                options.addArguments("-inprivate"); 
+                Map<String, Object> edgePrefs = new HashMap<String, Object>();
+                edgePrefs.put("credentials_enable_service", false);
+                edgePrefs.put("profile.password_manager_enabled", false);
+                //change password pop-up
+                edgePrefs.put("profile.password_manager_leak_detection", false);
+                options.setExperimentalOption("prefs", edgePrefs);
                 driverInstance = new EdgeDriver(options);
             } else {
                 // 🛑 THE FAIL-FAST SAFETY GATE: Tells you instantly if an unhandled browser type string bypassed the setup!
