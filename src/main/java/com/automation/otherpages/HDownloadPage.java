@@ -44,5 +44,20 @@ public class HDownloadPage {
 			}
 	    }
 
+	public void downloadFileByName(String fileName) {
+        By dynamicFileLocator = By.xpath("//a[contains(@data-testid, '" + fileName + "')]");
+        WebElement fileElement = action.waitForPresence(dynamicFileLocator);
+
+        // 🎨 VISUAL CONFIRMATION FLASH: Highlights the element right before the click!
+        try {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].style.border='3px solid orange';", fileElement);
+            Thread.sleep(500); // Small pause so your eyes can see the flash highlight
+        } catch (Exception e) {
+            // Silence highlight errors so it doesn't break the main execution flow
+        }
+
+        action.clickElement(dynamicFileLocator);
+    }
 	}
 

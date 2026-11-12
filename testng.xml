@@ -5,7 +5,9 @@
        data-provider-thread-count="2">
       <!-- 🔑 GLOBAL LISTENERS PLACEMENT: Right here beneath the suite tag! -->
     <listeners>
-        <listener class-name="com.automation.tests.TestFailureListener" />
+       <!-- <listener class-name="com.automation.tests.TestFailureListener" /> -->
+        <listener class-name="com.automation.utils.TestListener"/>
+
     </listeners>
     <!-- Chrome Execution Thread Context -->
     <test name="Storefront Execution Validation - Chrome">
@@ -35,7 +37,7 @@
 			<!--<class name="com.automation.othertests.HDynamicLoadingTest" />-->
 			<!--<class name="com.automation.othertests.HBasicAuthTest" />-->
 			<!--<class name="com.automation.othertests.HMultiWindowTest" />-->
-			<!--<class name="com.automation.othertests.HIframeTest" />-->
+			<!--<class name="com.automation.othertests.HIframeTest" /> -->
 			<!--<class name="com.automation.othertests.HHoverTest" />-->
 			<!--<class name="com.automation.othertests.HFileUploadTest" />-->
 		    <!-- <class name="com.automation.othertests.HDownloadTest" /> -->
@@ -43,7 +45,10 @@
 		    <!-- <class name="com.automation.othertests.HLoginTest" /> -->
 		   <!-- <class name="com.automation.othertests.ExceptionsCheckTest" /> -->
 		   <!-- <class name="com.automation.othertests.HDataTablesTest" /> -->
-		    <class name="com.automation.othertests.HCustDropdownTest" />
+		   <!-- <class name="com.automation.othertests.HCustDropdownTest" /> -->
+		   <!-- <class name="com.automation.othertests.HCalendarTest" />-->
+		   <!-- <class name="com.automation.othertests.HContextMenuTest" />-->
+		   <class name="com.automation.othertests.HCollectionTest" />
         </classes> 
     </test>
 

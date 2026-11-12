@@ -16,7 +16,7 @@ public class HIframeTest extends BaseTest {
 		getDriver().get(ConfigReader.getProperty("base.url") + "iframe");
 		
 		HIFramePage HIframePage = new HIFramePage(getDriver());
-		String mainHeaderText = HIframePage.verifyInputIFrame();
+		String mainHeaderText = HIframePage.verifyInputIFrame("Architect Level Entry");
 		Assert.assertEquals(mainHeaderText, "An iFrame containing the TinyMCE WYSIWYG Editor","ISSUE WITH NAVIGATING TO DEFAULT CONTENT");
 	}
 }

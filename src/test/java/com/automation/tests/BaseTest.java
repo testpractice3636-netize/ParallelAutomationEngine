@@ -37,6 +37,9 @@ public class BaseTest {
 //        public void setupBrowser(String browser) {
             threadBrowserName.set(browser);
             
+            // 🔑 Reads "-Dheadless=true" from Maven/CI command; defaults to "false" locally
+            boolean isHeadless = Boolean.parseBoolean(System.getProperty("headless", "false"));
+
             System.out.println("--- Framework Initialization Engine ---");
             System.out.println("[BASE TEST-INFO] Booting up parallel engine execution instance for: " + browser);
             
@@ -53,6 +56,14 @@ public class BaseTest {
                 options.addArguments("--disable-popup-blocking"); // Disables automated pop-up blocks
                 options.addArguments("--disable-blink-features=AutomationControlled"); // Hides "Chrome is being controlled by automation" flags
                 options.addArguments("--disable-infobars");
+                
+                // 🚀 CI/CD Headless Configuration
+                if (isHeadless) {
+                    options.addArguments("--headless=new");
+                    options.addArguments("--window-size=1920,1080");
+                    options.addArguments("--no-sandbox");
+                    options.addArguments("--disable-dev-shm-usage");
+                }
                 
                 Map<String, Object> prefs = new HashMap<String, Object>();
                 prefs.put("credentials_enable_service", false);
@@ -73,6 +84,15 @@ public class BaseTest {
                 
                 //change password popup
                 options.addArguments("-inprivate"); 
+                
+                // 🚀 CI/CD Headless Configuration for Edge
+                if (isHeadless) {
+                    options.addArguments("--headless=new");
+                    options.addArguments("--window-size=1920,1080");
+                    options.addArguments("--no-sandbox");
+                    options.addArguments("--disable-dev-shm-usage");
+                }
+                
                 Map<String, Object> edgePrefs = new HashMap<String, Object>();
                 edgePrefs.put("credentials_enable_service", false);
                 edgePrefs.put("profile.password_manager_enabled", false);

@@ -127,7 +127,7 @@ public class HElementActions {
 			try
 			{
 				WebElement jsElement = waitForVisibility(locator);
-				js.executeScript("Arguments[0].click()", jsElement);
+				js.executeScript("arguments[0].click()", jsElement);
 				return;
 				
 			}

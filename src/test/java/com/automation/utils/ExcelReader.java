@@ -13,57 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelReader {
 
-   /* // 1. Declare Apache POI core workbook object references
-    private static XSSFWorkbook workbook;
-    private static XSSFSheet sheet;
-    public static Object[][] getSheetMatrix(String filePath, String sheetName) {
-        Object[][] dataMatrix = null;
-        try {
-            FileInputStream fileInputStream = new FileInputStream(filePath);
-            workbook = new XSSFWorkbook(fileInputStream);
-            sheet = workbook.getSheet(sheetName);
-            
-            // 📊 Get total active rows and columns
-            int totalRows = sheet.getLastRowNum(); // Excludes header row count index
-            int totalCols = sheet.getRow(0).getLastCellNum();
-            
-            // Initialize our 2D array matching the exact dimensions (Rows x Columns)
-            dataMatrix = new Object[totalRows][totalCols];
-            DataFormatter formatter = new DataFormatter();
-            // STOP FAILING WHEN THERE IS SPACE IN TESTDATA
-         // 🔄 Safe nested loops for Excel Matrix reading
-         // 🔄 Loop through rows (Start from index 1 to skip the header row!)
-               for (int i = 1; i <= totalRows; i++) {
-                for (int j = 0; j < totalCols; j++) {
-                    var row = sheet.getRow(i);
-                    if (row != null) {
-                        XSSFCell cell = row.getCell(j);
-                        // 🔑 SAFETY FIX: If cell is null, store an empty string instead of crashing!
-                        if (cell == null) {
-                            dataMatrix[i - 1][j] = "";
-                        } else {
-                            dataMatrix[i - 1][j] = formatter.formatCellValue(cell);
-                        }
-                    } else {
-                        dataMatrix[i - 1][j] = "";
-                    }
-                }
-            }
-                        
-            workbook.close();
-            fileInputStream.close();
-            
-        } catch (Exception e) {
-            System.err.println("[UTILS-ERROR] Failed to compile data matrix from Excel sheet!");
-            e.printStackTrace();
-        }
-        return dataMatrix;
-    }
-    */
-	
-	    // FIXED: Removed class-level static workbook/sheet variables to eliminate parallel memory leaks!
-
-	    // FIXED: Added 'synchronized' keyword to serialize thread pipeline file reading
+  
 	//@DataProvider(name = "loginMatrixProvider", parallel = true)
 	    public static synchronized Object[][] getSheetMatrix(String filePath, String sheetName) {
 	        Object[][] dataMatrix = null;

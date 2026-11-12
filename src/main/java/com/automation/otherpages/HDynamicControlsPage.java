@@ -1,18 +1,23 @@
 package com.automation.otherpages;
 
-import static org.testng.Assert.fail;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
+
+import com.automation.otherpages.HElementActions;
 
 public class HDynamicControlsPage {
 
 	private final WebDriver driver;
 	private final HElementActions element;
+	
+	public HDynamicControlsPage(WebDriver driver)
+	{
+		this.driver = driver;
+		this.element = new HElementActions(driver);
+	}
 	
 	
 	private final By checkBox = By.xpath("//form[@id='checkbox-example']//div[contains(text(), 'A checkbox')]/input");
@@ -38,11 +43,6 @@ public class HDynamicControlsPage {
 	//CSS -->BELOW
 	private final By message1 = By.cssSelector(" form#input-example p#message");
 	
-	public HDynamicControlsPage(WebDriver driver)
-	{
-		this.driver = driver;
-		this.element= new HElementActions(driver);
-	}
 	
 	public void selectCheckBox()
 	{
@@ -65,8 +65,8 @@ public class HDynamicControlsPage {
 		}
 		catch(TimeoutException e)
 		{
-			Assert.fail("💥 [TIMEOUT-FAILURE] Expected text message [" + message 
-		            + "] failed to load in the DOM within " + 10 + " seconds due to backend lag.", e);
+			//org.testng.Assert.fail("💥 [TIMEOUT-FAILURE] Expected text message [" + message 
+		      //      + "] failed to load in the DOM within " + 10 + " seconds due to backend lag.", e);
 		        
 		        throw e;
 		}
@@ -90,7 +90,7 @@ public class HDynamicControlsPage {
 		}
 		catch(TimeoutException e)
 		{
-			Assert.fail("[TIMEOUT-FAILURE] Expected text message failed to load in the DOM within " + 10 + " seconds due to backend lag.", e);
+			//Assert.fail("[TIMEOUT-FAILURE] Expected text message failed to load in the DOM within " + 10 + " seconds due to backend lag.", e);
 			throw e;
 		}
 	}

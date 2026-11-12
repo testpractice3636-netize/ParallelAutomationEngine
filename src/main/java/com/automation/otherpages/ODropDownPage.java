@@ -1,7 +1,6 @@
 package com.automation.otherpages;
 
 
-	package com.automation.otherpages;
 
 	import org.openqa.selenium.By;
 	import org.openqa.selenium.WebDriver;
@@ -24,7 +23,7 @@ package com.automation.otherpages;
 	    // 🎯 Task: Construct a dynamic string or nested locator strategy for the option items
 	    // Hint: Think about how you want to target the specific city text securely.
 
-	    public HDropdownPage(WebDriver driver) {
+	    public ODropDownPage(WebDriver driver) {
 	        this.driver = driver;
 	        this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 	    }
