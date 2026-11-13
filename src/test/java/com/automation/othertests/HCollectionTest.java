@@ -37,7 +37,7 @@ public class HCollectionTest extends BaseTest{
 		
 		Set<String> disappearingCheck = collection.verifyDisappearingElements();
 		
-		Assert.assertTrue(disappearingCheck.contains("Gallery"),"ISSUE IN DISAPPEARING ELEMENTS");
+		Assert.assertTrue(disappearingCheck.contains("About"),"ISSUE IN DISAPPEARING ELEMENTS");
 		Assert.assertTrue(disappearingCheck.contains("Home"),"ISSUE IN DISAPPEARING ELEMENTS");
 	    System.out.println("Is Gallery visible on this run? " + disappearingCheck.contains("Gallery"));
 
