@@ -3,7 +3,9 @@ package com.automation.othertests;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -29,7 +31,14 @@ public class HCollectionSortTest extends BaseTest{
 		Collections.sort(expectedSortList);
 		System.out.println("------expectedSortList------"+expectedSortList);	
 		
+		List<String> actualEmails = sortPage.getAllEmails();
+		Set<String> uniqueEmails = new HashSet<>(actualEmails);
+		
+		System.out.println("Total Emails in Table: " + actualEmails.size());
+		System.out.println("Unique Emails in Set: " + uniqueEmails.size());
+		
 		Assert.assertEquals(actualList, expectedSortList, "Last Names are not sorted A-Z!");
+		Assert.assertEquals(uniqueEmails.size(), actualEmails.size(), "Duplicate email addresses found in table!");
 
 	}
 	
