@@ -48,7 +48,8 @@
 		   <!-- <class name="com.automation.othertests.HCustDropdownTest" /> -->
 		   <!-- <class name="com.automation.othertests.HCalendarTest" />-->
 		   <!-- <class name="com.automation.othertests.HContextMenuTest" />-->
-		   <class name="com.automation.othertests.HCollectionTest" />
+		   <!-- <class name="com.automation.othertests.HCollectionTest" />-->
+		   <class name="com.automation.othertests.HCollectionSortTest" />
         </classes> 
     </test>
 
